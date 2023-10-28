@@ -1,0 +1,12 @@
+---
+inventory:
+  plugin: SimpleInventory
+  options:
+    host_file: "inventory/hosts.yaml"
+  transform_function: "load_credentials"
+runner:
+  plugin: threaded
+  options:
+    num_workers: 10
+logging:
+  to_console: True

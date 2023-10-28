@@ -1,0 +1,16 @@
+---
+general:
+  base_path: firmware_files/
+device_types:
+  EX2300:
+    release: 21.4R3-S5.4
+    file: junos-arm-32-21.4R3-S5.4.tgz
+    md5: 1579e58e2a78a6b61a9c5fc5ff027591
+  EX3400:
+    release: 21.4R3-S5.4
+    file: junos-arm-32-21.4R3-S5.4.tgz
+    md5: 1579e58e2a78a6b61a9c5fc5ff027591
+  EX4100:
+    release: 22.3R2-S2.9
+    file: junos-install-ex-arm-64-22.3R2-S2.9.tgz
+    md5: ee450bbdc8950e4b56a71fdeb57930d6

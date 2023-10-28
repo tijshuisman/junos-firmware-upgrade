@@ -1,0 +1,10 @@
+---
+switch1:
+  hostname: "switch1.example.com"
+  port: 22
+switch2:
+  hostname: "switch2.example.com"
+  port: 22
+switch3:
+  hostname: 192.0.2.10
+  port: 22
