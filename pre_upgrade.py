@@ -75,8 +75,8 @@ def main():
     Prepare a JUNOS switch for a firmware upgrade.
     This is done by:
     - Storage cleanup
-    - Delete all snapshots (EX2300/3400/EX4100 only)
-    - Verify that there is storage space available for the firmware upgrade (EX2300/3400/EX4100 only)
+    - Delete all snapshots (EX2300/EX3400/EX4100 only)
+    - Verify that there is storage space available for the firmware upgrade (EX2300/EX3400 only)
     - Transfer the firmware file as defined in firmware.yaml
     """
     facts = nr.run(task=pyez_facts)
@@ -90,7 +90,7 @@ def main():
     nr.filter(F(model="EX3400") | F(model="EX2300")| F(model="EX4100")).run(
         task=pyez_rpc, func="request-snapshot", extras=delete_extras
     )
-    nr.filter(F(model="EX3400") | F(model="EX2300")| F(model="EX4100")).run(task=verify_freespace)
+    nr.filter(F(model="EX3400") | F(model="EX2300")).run(task=verify_freespace)
     nr.run(task=transfer_firmware)
 
 
