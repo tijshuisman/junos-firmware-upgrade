@@ -35,7 +35,7 @@ def upgrade_junos(task: Task, firmware_definitions: dict) -> None:
         }
         if task.host["model"] == "EX4600":
             kwargs["force_host"] = True
-    ok, msg = sw.install(**kwargs)
+        ok, msg = sw.install(**kwargs)
 
     if ok:
         logger.info(
