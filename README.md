@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> Due to an issue with py-junos-eznc Python version 3.11 and 3.12 are not supported.
+> Python version 3.11 and 3.12 are not supported due to an issue with py-junos-eznc .
 
 # JUNOS firmware upgrade tooling
 
@@ -7,10 +7,13 @@ This repository contains several scripts to help with automated upgrades on EX s
 
 # Features
 
+* Steps in the firmware upgrade process are seperated in several scripts. This way the pushing of the firmware files and the installation can be done in advance
 * Tested on various EX non-chassis switches (EX2300/EX3400/EX4100/EX4200/EX4600)
-* Steps in the firmware upgrade process are seperated in different scripts. This way the pushing of the firmware files and the installation can be done in advance
+* By default the scripts will execute on 10 switches in parallel
 
 # Usage
+
+The scripts are tested on Linux and Mac OS.
 
 ## Inventory
 
@@ -26,6 +29,10 @@ Switch authentication parameters can be set through environment variables.
 export NORNIR_USERNAME=your_tacacs_user
 export NORNIR_PASSWORD=your_tacacs_password
 ```
+
+## Firmware files
+
+The firmware files are defined in firmware.yaml.
 
 ## Scripts
 
@@ -49,3 +56,4 @@ The order that the scripts should be run in is:
 
 * Script to validate that the installation was done succesfully.
 * Ability to schedule the reboot.
+* QFX5k support
