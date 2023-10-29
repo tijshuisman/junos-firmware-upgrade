@@ -67,7 +67,7 @@ def transfer_firmware(task: Task) -> None:
     )
     assert (
         firmware_md5.result == firmware_definitions["device_types"][task.host["model"]]["md5"]
-    ), f"{task.host.name}: checksum of firmware file doesn't match original"
+    ), f"{task.host.name}: checksum of firmware file doesn't match original."
 
 
 def main():
@@ -75,8 +75,8 @@ def main():
     Prepare a JUNOS switch for a firmware upgrade.
     This is done by:
     - Storage cleanup
-    - Delete all snapshots (EX2300/3400 only)
-    - Verify that there is storage space available for the firmware upgrade (EX2300/3400 only)
+    - Delete all snapshots (EX2300/3400/EX4100 only)
+    - Verify that there is storage space available for the firmware upgrade (EX2300/3400/EX4100 only)
     - Transfer the firmware file as defined in firmware.yaml
     """
     facts = nr.run(task=pyez_facts)
@@ -87,10 +87,10 @@ def main():
     nr.run(task=pyez_rpc, func="request-system-storage-cleanup")
 
     delete_extras = {"delete": "*"}
-    nr.filter(F(model="EX3400") | F(model="EX2300")).run(
+    nr.filter(F(model="EX3400") | F(model="EX2300")| F(model="EX4100")).run(
         task=pyez_rpc, func="request-snapshot", extras=delete_extras
     )
-    nr.filter(F(model="EX3400") | F(model="EX2300")).run(task=verify_freespace)
+    nr.filter(F(model="EX3400") | F(model="EX2300")| F(model="EX4100")).run(task=verify_freespace)
     nr.run(task=transfer_firmware)
 
 
