@@ -34,11 +34,11 @@ def main():
 
     extras_cleanup = {"all_members": True}
     nr.run(task=pyez_rpc, func="request-system-storage-cleanup", extras=extras_cleanup)
-    nr.filter(F(model="EX3400") | F(model="EX2300")).run(
+    nr.filter(F(model="EX3400") | F(model="EX2300") | F(model="EX4100")).run(
         task=pyez_rpc, func="request-snapshot"
     )
     extras_snapshot_recovery_ex3400 = {"recovery": True}
-    nr.filter(F(model="EX3400") | F(model="EX2300")).run(
+    nr.filter(F(model="EX3400") | F(model="EX2300") | F(model="EX4100")).run(
         task=pyez_rpc, func="request-snapshot", extras=extras_snapshot_recovery_ex3400
     )
     extras_snapshot_recovery_ex4200 = {"slice": "alternate"}
