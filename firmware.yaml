@@ -14,3 +14,7 @@ device_types:
     release: 22.3R2-S2.9
     file: junos-install-ex-arm-64-22.3R2-S2.9.tgz
     md5: ee450bbdc8950e4b56a71fdeb57930d6
+  EX4600:
+    release: 21.4R3-S5.4
+    file: jinstall-host-ex-4600-21.4R3-S5.4-signed.tgz
+    md5: 9c94fa38159d913f4cd754ba8d9682ba
