@@ -1,6 +1,3 @@
-> [!IMPORTANT]
-> Python version 3.11 and 3.12 are not supported due to an issue with py-junos-eznc .
-
 # JUNOS firmware upgrade tooling
 
 This repository contains several scripts to help with automated upgrades on EX series JUNOS switches. The scripts are setup in a way so that a large amount of JUNOS switches can be upgraded simultaneously.
