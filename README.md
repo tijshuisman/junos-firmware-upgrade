@@ -7,9 +7,9 @@ This repository contains several scripts to help with automated upgrades on EX s
 
 # Features
 
-* Steps in the firmware upgrade process are seperated in several scripts. This way the pushing of the firmware files and the installation can be done in advance
-* Tested on various EX non-chassis switches (EX2300/EX3400/EX4100/EX4200/EX4600)
-* By default the scripts will execute on 10 switches in parallel
+* Steps in the firmware upgrade process are seperated in several scripts. This way the pushing of the firmware files and the installation can be done in advance.
+* Tested on various EX non-chassis switches (EX2300/EX3400/EX4100/EX4200/EX4400/EX4600).
+* By default the scripts will execute on 10 switches in parallel. You can change this to a higher number by increasing the number of workers in config.yaml. The scripts have been tested and used in production with 80 workers.
 
 # Usage
 
@@ -51,9 +51,3 @@ The order that the scripts should be run in is:
   - Storage cleanup
   - Create non-recovery and recovery snapshots (this step can take very long)
   - Set rescue config
-
-# Future
-
-* Script to validate that the installation was done succesfully.
-* Ability to schedule the reboot.
-* QFX5k support

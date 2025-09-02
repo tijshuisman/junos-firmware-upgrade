@@ -7,6 +7,6 @@ inventory:
 runner:
   plugin: threaded
   options:
-    num_workers: 10
+    num_workers: 10 # Adjust to increase the amount of parallel processes
 logging:
   to_console: True
