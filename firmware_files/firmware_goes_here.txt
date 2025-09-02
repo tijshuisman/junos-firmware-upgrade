@@ -1,1 +1,1 @@
-Firmware files go here.
+Place the firmware .tgz files in this folder. They should match with what is defined in firmware.yaml.
