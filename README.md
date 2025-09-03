@@ -4,7 +4,7 @@ This repository contains several scripts to help with automated upgrades on EX s
 
 # Features
 
-* Steps in the firmware upgrade process are seperated in several scripts. This way the pushing of the firmware files and the installation can be done in advance.
+* Steps in the firmware upgrade process are separated in several scripts. This way the pushing of the firmware files and the installation can be done in advance.
 * Tested on various EX non-chassis switches (EX2300/EX3400/EX4100/EX4200/EX4400/EX4600).
 * By default the scripts will execute on 10 switches in parallel. You can change this to a higher number by increasing the number of workers in config.yaml. The scripts have been tested and used in production with 80 workers.
 
@@ -48,3 +48,23 @@ The order that the scripts should be run in is:
   - Storage cleanup
   - Create non-recovery and recovery snapshots (this step can take very long)
   - Set rescue config
+
+## Important Considerations
+
+### Model-Specific Firmware Requirements
+
+**Current Limitation**: The scripts currently use basic model detection based on the device model string (e.g., "EX4400"). However, this approach has limitations for devices with multiple hardware variants that require different firmware files. Model matching for firmware is currently done now in a lazy way.
+
+We cannot distinguish between different submodels, for example:
+- EX4400-48P (48-port PoE model)
+- EX4400-48T (48-port non-PoE model)
+- EX4400-24X (24-port with 10G uplinks)
+
+The 24X model requires a different firmware file. 
+
+**Workaround**:
+If necessary you can separate these into using different firmware.yaml or inventory files. 
+
+## Other Considerations
+- Verify network connectivity and authentication before starting bulk upgrades
+- Ensure sufficient maintenance window time - snapshots can take 30+ minutes per device, especially on large virtual chassis stacks.
